@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+	<head>
+		<meta content="width=320, initial-scale=0.8, maximum-scale=1.0, user-scalable=0" name="viewport" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{{OAUTHINTEGRATORWEBCLIENT/LABEL_ES_SETTINGS_TAB}}</title>
+		<link type="image/x-icon" rel="shortcut icon" href="favicon.ico" />
+		<link type="text/css" rel="stylesheet" href="static/styles/libs/libs.css" />
+		<link type="text/css" rel="stylesheet" href="static/styles/themes/Default/styles.css" />
+	</head>
+	<body>
+		<div class="login_panel">
+			<div class="content social" id="button-list">
+				<div class="button" style="display: none;" id="button-template">
+					<span class="border"></span>
+					<span class="text">
+						<span>{{OAUTHINTEGRATORWEBCLIENT/LABEL_SIGN_IN}}</span>
+					</span>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var
+				aServices = {{ServicesArray}},
+				eButtonList = document.getElementById('button-list'),
+				eButtonTemplate = document.getElementById('button-template'),
+				eClone = null,
+				iServiceIndex = 0,
+				iLen = aServices.length,
+				iNodeIndex = 0,
+				sName = '',
+				eName = null,
+				eNameText = null
+			;
+			for (; iServiceIndex < iLen; iServiceIndex++)
+			{
+				sName = aServices[iServiceIndex];
+				eClone = eButtonTemplate.cloneNode(true);
+				eClone.className = 'button ' + sName;
+				for (; iNodeIndex < eClone.childNodes.length; iNodeIndex++)
+				{
+					if (eClone.childNodes[iNodeIndex].tagName === 'SPAN' && eClone.childNodes[iNodeIndex].className === 'text')
+					{
+						eName = document.createElement('SPAN');
+						eNameText = document.createTextNode(sName[0].toUpperCase() + sName.substring(1));
+						eName.appendChild(eNameText);
+						eClone.childNodes[iNodeIndex].appendChild(eName); 
+					}
+				}
+				eClone.style.display = 'inline-block';
+				eClone.onclick = (function (sSocialName) {
+					return function () {
+						document.cookie = 'oauth-redirect=login';
+						document.cookie = 'oauth-scopes=auth';
+
+						window.location.href = '?oauth=' + sSocialName;
+					};
+				})(sName);
+				eButtonList.appendChild(eClone);
+			}
+		</script>
+	</body>
+</html>
