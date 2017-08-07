@@ -8,7 +8,7 @@
  * For full statements of the licenses see LICENSE-AFTERLOGIC and LICENSE-AGPL3 files.
  */
 
-namespace Aurora\Modules\OAuthIntegratorMobileWebclient;
+namespace Aurora\Modules\ExternalClientsLoginFormWebclient;
 
 /**
  * @package Modules
@@ -26,7 +26,7 @@ class Module extends \Aurora\System\Module\AbstractWebclientModule
 		parent::init();
 		
 		$this->AddEntries(array(
-				'mobile-oauth' => 'EntryMobileOAuth',
+				'external-clients-login-form' => 'EntryExternalClientsLoginForm',
 			)
 		);
 	}
@@ -37,9 +37,9 @@ class Module extends \Aurora\System\Module\AbstractWebclientModule
 	 * @ignore
 	 * @return string
 	 */
-	public function EntryMobileOAuth()
+	public function EntryExternalClientsLoginForm()
 	{
-		$sResult = \file_get_contents($this->GetPath().'/templates/MobileOAuth.html');
+		$sResult = \file_get_contents($this->GetPath().'/templates/ExternalClientsLoginForm.html');
 		$oOAuthModuleDecorator = \Aurora\Modules\OAuthIntegratorWebclient\Module::Decorator();
 		$aServices = $oOAuthModuleDecorator->GetServices();
 		$sResult = strtr($sResult, array(
