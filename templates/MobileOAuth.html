@@ -37,7 +37,7 @@
 				sName = aServices[iServiceIndex];
 				eClone = eButtonTemplate.cloneNode(true);
 				eClone.className = 'button ' + sName;
-				for (; iNodeIndex < eClone.childNodes.length; iNodeIndex++)
+				for (iNodeIndex = 0; iNodeIndex < eClone.childNodes.length; iNodeIndex++)
 				{
 					if (eClone.childNodes[iNodeIndex].tagName === 'SPAN' && eClone.childNodes[iNodeIndex].className === 'text')
 					{
