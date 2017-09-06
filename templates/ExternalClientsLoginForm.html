@@ -5,12 +5,13 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>{{OAUTHINTEGRATORWEBCLIENT/LABEL_ES_SETTINGS_TAB}}</title>
 		<link type="image/x-icon" rel="shortcut icon" href="favicon.ico" />
-		<link type="text/css" rel="stylesheet" href="static/styles/libs/libs.css" />
+		<!--<link type="text/css" rel="stylesheet" href="static/styles/libs/libs.css" />-->
 		<link type="text/css" rel="stylesheet" href="static/styles/themes/Default/styles.css" />
 	</head>
-	<body>
+	<body class="ExternalClientsLoginFormWebclient">
 		<div class="login_panel">
 			<div class="content social" id="button-list">
+				<div class="info">{{OAUTHINTEGRATORWEBCLIENT/LABEL_SIGN_BUTTONS}}</div>
 				<div class="button" style="display: none;" id="button-template">
 					<span class="border"></span>
 					<span class="text">
@@ -47,7 +48,7 @@
 						eClone.childNodes[iNodeIndex].appendChild(eName); 
 					}
 				}
-				eClone.style.display = 'inline-block';
+				eClone.style.display = 'block';
 				eClone.onclick = (function (sSocialName) {
 					return function () {
 						document.cookie = 'oauth-redirect=login';
