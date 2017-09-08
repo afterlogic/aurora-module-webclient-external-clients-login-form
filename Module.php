@@ -30,6 +30,24 @@ class Module extends \Aurora\System\Module\AbstractWebclientModule
 			)
 		);
 	}
+	
+	private function getLanguageName($sLocale)
+	{
+		$aLocales = array(
+			'ru-RU' => 'Russian',
+			'en-GB' => 'English'
+		);
+		
+		$mLanguage = false;
+		
+		if (isset($aLocales[(string)$sLocale]))
+		{
+			$mLanguage = $aLocales[(string)$sLocale];
+		}
+		
+		return $mLanguage;
+	}
+	
 	/***** private functions *****/
 	
 	/***** public functions *****/
@@ -41,7 +59,12 @@ class Module extends \Aurora\System\Module\AbstractWebclientModule
 	{
 		$sLocale = $this->oHttp->GetQuery('locale', 'en-GB');
 		
-		\Aurora\System\Api::SetLanguage($sLocale);
+		$sLanguage = $this->getLanguageName($sLocale);
+		
+		if ($sLanguage)
+		{
+			\Aurora\System\Api::SetLanguage($sLanguage);
+		}
 		
 		$sResult = \file_get_contents($this->GetPath().'/templates/ExternalClientsLoginForm.html');
 		$oOAuthModuleDecorator = \Aurora\Modules\OAuthIntegratorWebclient\Module::Decorator();
