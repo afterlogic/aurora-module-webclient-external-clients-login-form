@@ -41,6 +41,8 @@ class Module extends \Aurora\System\Module\AbstractWebclientModule
 	{
 		$sLocale = $this->oHttp->GetQuery('locale', 'en-GB');
 		
+		\Aurora\System\Api::SetLanguage($sLocale);
+		
 		$sResult = \file_get_contents($this->GetPath().'/templates/ExternalClientsLoginForm.html');
 		$oOAuthModuleDecorator = \Aurora\Modules\OAuthIntegratorWebclient\Module::Decorator();
 		$aServices = $oOAuthModuleDecorator->GetServices();
