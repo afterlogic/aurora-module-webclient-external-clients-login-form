@@ -69,6 +69,7 @@ class Module extends \Aurora\System\Module\AbstractWebclientModule
 		$sResult = \file_get_contents($this->GetPath().'/templates/ExternalClientsLoginForm.html');
 		$oOAuthModuleDecorator = \Aurora\Modules\OAuthIntegratorWebclient\Module::Decorator();
 		$aServices = $oOAuthModuleDecorator->GetServices();
+		
 		$sResult = strtr($sResult, array(
 			'{{OAUTHINTEGRATORWEBCLIENT/LABEL_ES_SETTINGS_TAB}}' => $oOAuthModuleDecorator->i18N('LABEL_ES_SETTINGS_TAB'),
 			'{{OAUTHINTEGRATORWEBCLIENT/LABEL_SIGN_IN}}' => $oOAuthModuleDecorator->i18N('LABEL_SIGN_IN'),
@@ -84,7 +85,10 @@ class Module extends \Aurora\System\Module\AbstractWebclientModule
 	/***** public functions might be called with web API *****/
 	public function IsAvailable()
 	{
-		return true;
+		$oOAuthModuleDecorator = \Aurora\Modules\OAuthIntegratorWebclient\Module::Decorator();
+		$aServices = $oOAuthModuleDecorator->GetServices();
+		
+		return (bool)$aServices;
 	}
 	/***** /public functions might be called with web API *****/
 }
