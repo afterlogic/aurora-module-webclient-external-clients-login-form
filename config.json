@@ -1,10 +1,18 @@
 {
-	"Disabled": [
-		false,
-		"bool"
-	],
-    "IncludeInDesktop": [
-		false,
-		"bool"
-    ]
+  "Disabled": [
+    false,
+    "bool"
+  ],
+  "Disabled_Description": [
+    "",
+    "string"
+  ],
+  "IncludeInDesktop": [
+    false,
+    "bool"
+  ],
+  "IncludeInDesktop_Description": [
+    "",
+    "string"
+  ]
 }
