@@ -18,6 +18,14 @@ namespace Aurora\Modules\ExternalClientsLoginFormWebclient;
  */
 class Module extends \Aurora\System\Module\AbstractWebclientModule
 {
+    /**
+     * @return Module
+     */
+    public static function Decorator()
+    {
+        return parent::Decorator();
+    }
+
     /***** private functions *****/
     /**
      * Initializes OAuthIntegratorMobileWebclient Module.
