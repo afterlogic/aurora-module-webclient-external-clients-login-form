@@ -94,7 +94,7 @@ class Module extends \Aurora\System\Module\AbstractWebclientModule
             \Aurora\System\Api::SetLanguage($sLanguage);
         }
 
-        $sResult = \file_get_contents($this->GetPath().'/templates/ExternalClientsLoginForm.html');
+        $sResult = \file_get_contents($this->GetPath() . '/templates/ExternalClientsLoginForm.html');
         $oOAuthModuleDecorator = \Aurora\Modules\OAuthIntegratorWebclient\Module::Decorator();
         $aServices = $oOAuthModuleDecorator->GetServices();
 
