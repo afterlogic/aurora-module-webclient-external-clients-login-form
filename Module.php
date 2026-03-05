@@ -7,6 +7,8 @@
 
 namespace Aurora\Modules\ExternalClientsLoginFormWebclient;
 
+use Aurora\System\Facades\Route;
+
 /**
  * Provides login form for external clients.
  *
@@ -54,10 +56,11 @@ class Module extends \Aurora\System\Module\AbstractWebclientModule
     {
         parent::init();
 
-        $this->AddEntries(
-            array(
+        Route::add(
+            $this,
+            [
                 'external-clients-login-form' => 'EntryExternalClientsLoginForm',
-            )
+            ]
         );
     }
 
